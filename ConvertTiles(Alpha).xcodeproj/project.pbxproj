@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87000C822948CA2F0095DAE2 /* TilesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C812948CA2F0095DAE2 /* TilesPageView.swift */; };
+		87000C842948CA490095DAE2 /* TileBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C832948CA490095DAE2 /* TileBoxView.swift */; };
+		87000C862948CA720095DAE2 /* AddTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C852948CA720095DAE2 /* AddTileView.swift */; };
+		87000C882948CA7D0095DAE2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C872948CA7D0095DAE2 /* SettingsView.swift */; };
+		87000C8A2948CAE10095DAE2 /* ConvertersArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C892948CAE10095DAE2 /* ConvertersArray.swift */; };
+		87000C8C2948CAF50095DAE2 /* UnitsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C8B2948CAF50095DAE2 /* UnitsSwitch.swift */; };
+		87000C8E2948CB150095DAE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C8D2948CB150095DAE2 /* Extensions.swift */; };
 		8779DD052947D04900F9AA6C /* ConvertTiles_Alpha_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */; };
-		8779DD072947D04900F9AA6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD062947D04900F9AA6C /* ContentView.swift */; };
 		8779DD092947D04A00F9AA6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779DD082947D04A00F9AA6C /* Assets.xcassets */; };
 		8779DD0D2947D04A00F9AA6C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779DD0C2947D04A00F9AA6C /* Preview Assets.xcassets */; };
 		8779DD172947D04A00F9AA6C /* ConvertTiles_Alpha_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD162947D04A00F9AA6C /* ConvertTiles_Alpha_Tests.swift */; };
@@ -34,9 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87000C812948CA2F0095DAE2 /* TilesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesPageView.swift; sourceTree = "<group>"; };
+		87000C832948CA490095DAE2 /* TileBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileBoxView.swift; sourceTree = "<group>"; };
+		87000C852948CA720095DAE2 /* AddTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTileView.swift; sourceTree = "<group>"; };
+		87000C872948CA7D0095DAE2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		87000C892948CAE10095DAE2 /* ConvertersArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertersArray.swift; sourceTree = "<group>"; };
+		87000C8B2948CAF50095DAE2 /* UnitsSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSwitch.swift; sourceTree = "<group>"; };
+		87000C8D2948CB150095DAE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8779DD012947D04900F9AA6C /* ConvertTiles(Alpha).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConvertTiles(Alpha).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTiles_Alpha_App.swift; sourceTree = "<group>"; };
-		8779DD062947D04900F9AA6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8779DD082947D04A00F9AA6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8779DD0A2947D04A00F9AA6C /* ConvertTiles_Alpha_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConvertTiles_Alpha_.entitlements; sourceTree = "<group>"; };
 		8779DD0C2947D04A00F9AA6C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -72,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87000C8F2948CB1B0095DAE2 /* Units&Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87000C892948CAE10095DAE2 /* ConvertersArray.swift */,
+				87000C8B2948CAF50095DAE2 /* UnitsSwitch.swift */,
+				87000C8D2948CB150095DAE2 /* Extensions.swift */,
+			);
+			path = "Units&Extensions";
+			sourceTree = "<group>";
+		};
 		8779DCF82947D04900F9AA6C = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */,
-				8779DD062947D04900F9AA6C /* ContentView.swift */,
+				87000C812948CA2F0095DAE2 /* TilesPageView.swift */,
+				87000C832948CA490095DAE2 /* TileBoxView.swift */,
+				87000C852948CA720095DAE2 /* AddTileView.swift */,
+				87000C872948CA7D0095DAE2 /* SettingsView.swift */,
+				87000C8F2948CB1B0095DAE2 /* Units&Extensions */,
 				8779DD082947D04A00F9AA6C /* Assets.xcassets */,
 				8779DD0A2947D04A00F9AA6C /* ConvertTiles_Alpha_.entitlements */,
 				8779DD0B2947D04A00F9AA6C /* Preview Content */,
@@ -259,8 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8779DD072947D04900F9AA6C /* ContentView.swift in Sources */,
+				87000C882948CA7D0095DAE2 /* SettingsView.swift in Sources */,
+				87000C8C2948CAF50095DAE2 /* UnitsSwitch.swift in Sources */,
 				8779DD052947D04900F9AA6C /* ConvertTiles_Alpha_App.swift in Sources */,
+				87000C8E2948CB150095DAE2 /* Extensions.swift in Sources */,
+				87000C8A2948CAE10095DAE2 /* ConvertersArray.swift in Sources */,
+				87000C822948CA2F0095DAE2 /* TilesPageView.swift in Sources */,
+				87000C862948CA720095DAE2 /* AddTileView.swift in Sources */,
+				87000C842948CA490095DAE2 /* TileBoxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

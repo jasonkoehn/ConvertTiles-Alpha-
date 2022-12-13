@@ -11,7 +11,7 @@ import SwiftUI
 struct ConvertTiles_Alpha_App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TilesPageView()
         }
     }
 }
