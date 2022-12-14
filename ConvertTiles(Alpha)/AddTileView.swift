@@ -18,6 +18,7 @@ struct AddTileView: View {
     @State var customUnits: [String] = []
     @State var unitAmount = "Multiple"
     @Binding var converters: [Converter]
+    @State var accentColor: Color
     var body: some View {
         Form {
             // Selection of the Group
@@ -51,6 +52,7 @@ struct AddTileView: View {
                     }) {
                         Image(systemName: "multiply")
                             .font(.system(size: 24))
+                            .foregroundColor(.blue)
                     }
                 }
             }
@@ -79,6 +81,7 @@ struct AddTileView: View {
                                 }) {
                                     HStack {
                                         Text(unit)
+                                            .foregroundColor(accentColor)
                                         if customUnits.contains(unit) {
                                             Spacer()
                                             Image(systemName: "checkmark")
@@ -137,6 +140,7 @@ struct AddTileView: View {
                 .pickerStyle(.menu)
             }
         }
+        .accentColor(accentColor)
         .navigationTitle("Add A Tile")
         .navigationBarItems(trailing: Button(action: {
             if unitAmount == "Multiple" {

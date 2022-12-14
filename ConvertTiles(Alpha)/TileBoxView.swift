@@ -16,7 +16,7 @@ struct TileBoxView: View {
     @State var outUnit: String
     @FocusState var isInputActive: Bool
     @State var firstAmount: Double = 1
-    @State private var color: Color = loadColor(key: "accentColor")
+    @Binding var accentColor: Color
     var body: some View {
         VStack {
             Text(name)
@@ -38,7 +38,7 @@ struct TileBoxView: View {
                             }
                             .pickerStyle(.menu)
                             .padding(.vertical, 5)
-                            .accentColor(color)
+                            .accentColor(accentColor)
                         }
                         TextField("Value", value: $firstAmount, formatter: Formatter.inNumberFormat)
                             .onTapGesture {
@@ -63,7 +63,7 @@ struct TileBoxView: View {
                 }) {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 23))
-                        .foregroundColor(color)
+                        .foregroundColor(accentColor)
                 }
                 Spacer().overlay {
                     VStack {
@@ -79,7 +79,7 @@ struct TileBoxView: View {
                             }
                             .pickerStyle(.menu)
                             .padding(.vertical, 5)
-                            .accentColor(color)
+                            .accentColor(accentColor)
                         }
                         Text(FormatNum(from: Measurement(value: firstAmount, unit: SwitchToUnits(text: inUnit)).converted(to: SwitchToUnits(text: outUnit)).value as NSNumber))
                             .font(.system(size: 25))
@@ -92,8 +92,5 @@ struct TileBoxView: View {
         }
         .background(Color(.systemGray5))
         .cornerRadius(12)
-//        .onAppear {
-//            color = loadColor(key: "accentColor")
-//        }
     }
 }

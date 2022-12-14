@@ -16,6 +16,7 @@ struct TilesPageView: View {
     @State var isEditing = false
     @State var converters: [Converter] = []
     var columns = [GridItem(.adaptive(minimum: 335))]
+    @State private var accentColor: Color = loadColor(key: "accentColor")
     var body: some View {
         NavigationView {
             ZStack {
@@ -38,7 +39,7 @@ struct TilesPageView: View {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(converters, id: \.id) { converter in
-                                TileBoxView(name: converter.name, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive)
+                                TileBoxView(name: converter.name, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive, accentColor: $accentColor)
                             }
                         }
                         .padding(.horizontal, 7)
@@ -89,12 +90,12 @@ struct TilesPageView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showSettingsView) {
             NavigationView {
-                SettingsView()
+                SettingsView(accentColor: $accentColor)
             }
         }
         .sheet(isPresented: $showAddTileView) {
             NavigationView {
-                AddTileView(converters: $converters)
+                AddTileView(converters: $converters, accentColor: accentColor)
             }
         }
         .task {
