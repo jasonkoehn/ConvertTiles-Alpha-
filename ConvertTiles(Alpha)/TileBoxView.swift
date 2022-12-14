@@ -37,7 +37,7 @@ struct TileBoxView: View {
                             }
                             .pickerStyle(.menu)
                             .padding(.vertical, 5)
-                            .accentColor(.orange)
+                            .accentColor(.blue)
                         }
                         TextField("Value", value: $firstAmount, formatter: Formatter.inNumberFormat)
                             .onTapGesture {
@@ -62,7 +62,7 @@ struct TileBoxView: View {
                 }) {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 23))
-                        .foregroundColor(.orange)
+                        .foregroundColor(.blue)
                 }
                 Spacer().overlay {
                     VStack {
@@ -78,7 +78,7 @@ struct TileBoxView: View {
                             }
                             .pickerStyle(.menu)
                             .padding(.vertical, 5)
-                            .accentColor(.orange)
+                            .accentColor(.blue)
                         }
                         Text(FormatNum(from: Measurement(value: firstAmount, unit: SwitchToUnits(text: inUnit)).converted(to: SwitchToUnits(text: outUnit)).value as NSNumber))
                             .font(.system(size: 25))

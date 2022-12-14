@@ -22,6 +22,15 @@ struct ConverterList: Codable {
     var units: [String]
 }
 
+var basicConverters: [Converter] = [
+    Converter(name: "Area", id: UUID(), group: "Area", unitAmount: "Multiple", units: ["Square Megameters", "Square Kilometers", "Square Meters", "Square Centimeters", "Square Millimeters", "Square Micrometers", "Square Nanometers", "Square Inches", "Square Feet", "Square Yards", "Square Miles", "Acres", "Ares", "Hectares"], inUnit: "Square Meters", outUnit: "Square Feet"),
+    Converter(name: "Length", id: UUID(), group: "Length", unitAmount: "Multiple", units: ["Megameters", "Kilometers", "Hectometers", "Decameters", "Meters", "Decimeters", "Centimeters", "Millimeters", "Micrometers", "Nanometers", "Picometers", "Inches", "Feet", "Yards", "Miles", "Scandinavian Miles", "Light Years", "Nautical Miles", "Fathoms", "Furlongs", "Astronomical Units", "Parsecs"], inUnit: "Meters", outUnit: "Yards"),
+    Converter(name: "Mass", id: UUID(), group: "Mass", unitAmount: "Multiple", units: ["Kilograms", "Grams", "Decigrams", "Centigrams", "Milligrams", "Micrograms", "Nanograms", "Picograms", "Ounces", "Pounds", "Stones", "MetricTons", "ShortTons", "Carats", "OuncesTroy", "Slugs"], inUnit: "Kilograms", outUnit: "Pounds"),
+    Converter(name: "Speed", id: UUID(), group: "Speed", unitAmount: "Multiple", units: ["Meters Per Second", "Kilometers Per Hour", "Miles Per Hour", "Knots"], inUnit: "Knots", outUnit: "Miles Per Hour"),
+    Converter(name: "Temperature", id: UUID(), group: "Temperature", unitAmount: "Multiple", units: ["Kelvin", "Celsius", "Fahrenheit"], inUnit: "Celsius", outUnit: "Fahrenheit"),
+    Converter(name: "Volume", id: UUID(), group: "Volume", unitAmount: "Multiple", units: ["Megaliters", "Kiloliters", "Liters", "Deciliters", "Centiliters", "Milliliters", "Cubic Kilometers", "Cubic Meters", "Cubic Decimeters", "Cubic Millimeters", "Cubic Inches", "Cubic Feet", "Cubic Yards", "Cubic Miles", "Acre Feet", "Bushels", "Teaspoons", "Tablespoons", "Fluid Ounces", "Cups", "Pints", "Quarts", "Gallons", "Imperial Teaspoons", "Imperial Tablespoons", "Imperial Fluid Ounces", "Imperial Pints", "Imperial Quarts", "Imperial Gallons", "Metric Cups"], inUnit: "Gallons", outUnit: "Liters")
+]
+
 var convertersList: [ConverterList] = [
     ConverterList(group: "Acceleration", units: ["Meters Per Second Squared", "Gravity"]),
     ConverterList(group: "Angle", units: ["Degrees", "Arc Minutes", "Arc Seconds", "Radians", "Gradians", "Revolutions"]),

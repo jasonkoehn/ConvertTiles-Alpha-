@@ -67,6 +67,15 @@ struct TilesPageView: View {
             .navigationBarItems(trailing: Button(action: {
                 isEditing.toggle()
                 editMode = isEditing ? .active : .inactive
+                if isEditing == false {
+                    let manager = FileManager.default
+                    guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+                    let encoder = PropertyListEncoder()
+                    let convertersUrl = managerUrl.appendingPathComponent("converters.plist")
+                    manager.createFile(atPath: convertersUrl.path, contents: nil, attributes: nil)
+                    let encodedData = try! encoder.encode(converters)
+                    try! encodedData.write(to: convertersUrl)
+                }
             }){
                 if isEditing == true {
                     Text("Done")
