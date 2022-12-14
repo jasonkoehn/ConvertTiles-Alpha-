@@ -20,6 +20,7 @@
 		8779DD172947D04A00F9AA6C /* ConvertTiles_Alpha_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD162947D04A00F9AA6C /* ConvertTiles_Alpha_Tests.swift */; };
 		8779DD212947D04A00F9AA6C /* ConvertTiles_Alpha_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD202947D04A00F9AA6C /* ConvertTiles_Alpha_UITests.swift */; };
 		8779DD232947D04A00F9AA6C /* ConvertTiles_Alpha_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD222947D04A00F9AA6C /* ConvertTiles_Alpha_UITestsLaunchTests.swift */; };
+		87D96893294A73CA0066CA5E /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D96892294A73CA0066CA5E /* LaunchView.swift */; };
 		87FAD5672948ED8B0014C22F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FAD5662948ED8B0014C22F /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		8779DD1C2947D04A00F9AA6C /* ConvertTiles(Alpha)UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConvertTiles(Alpha)UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8779DD202947D04A00F9AA6C /* ConvertTiles_Alpha_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTiles_Alpha_UITests.swift; sourceTree = "<group>"; };
 		8779DD222947D04A00F9AA6C /* ConvertTiles_Alpha_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTiles_Alpha_UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		87D96892294A73CA0066CA5E /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		87FAD5662948ED8B0014C22F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */,
+				87D96892294A73CA0066CA5E /* LaunchView.swift */,
 				87000C812948CA2F0095DAE2 /* TilesPageView.swift */,
 				87000C832948CA490095DAE2 /* TileBoxView.swift */,
 				87000C852948CA720095DAE2 /* AddTileView.swift */,
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87000C882948CA7D0095DAE2 /* SettingsView.swift in Sources */,
+				87D96893294A73CA0066CA5E /* LaunchView.swift in Sources */,
 				87000C8C2948CAF50095DAE2 /* UnitsSwitch.swift in Sources */,
 				8779DD052947D04900F9AA6C /* ConvertTiles_Alpha_App.swift in Sources */,
 				87000C8E2948CB150095DAE2 /* Extensions.swift in Sources */,

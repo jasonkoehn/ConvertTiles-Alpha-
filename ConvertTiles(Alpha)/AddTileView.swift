@@ -19,125 +19,148 @@ struct AddTileView: View {
     @State var unitAmount = "Multiple"
     @Binding var converters: [Converter]
     @State var accentColor: Color
+    @AppStorage("plus") var isPlus: Bool = false
     var body: some View {
         Form {
-            // Selection of the Group
-            Picker("Group:", selection: $group) {
-                ForEach(convertersList, id: \.group) { converter in
-                    Text(converter.group).tag(converter.group)
-                        .task {
-                            units = converter.units
-                            name = converter.group
-                            inUnit = units.first ?? ""
-                            outUnit = units.first ?? ""
-                        }
-                        .onChange(of: group) { group in
-                            customUnits = []
-                            if customSelection {
-                                inUnit = ""
-                                outUnit = ""
+            if isPlus {
+                
+                // Plus
+                
+                // Selection of the Group
+                Picker("Group:", selection: $group) {
+                    ForEach(convertersList, id: \.group) { converter in
+                        Text(converter.group).tag(converter.group)
+                            .task {
+                                units = converter.units
+                                name = converter.group
+                                inUnit = units.first ?? ""
+                                outUnit = units.first ?? ""
                             }
-                        }
-                }
-            }
-            .pickerStyle(.navigationLink)
-            
-            // Name Slot
-            HStack {
-                Text("Name:")
-                TextField(group, text: $name)
-                ZStack {
-                    Button(action: {
-                        name = ""
-                    }) {
-                        Image(systemName: "multiply")
-                            .font(.system(size: 24))
-                            .foregroundColor(.blue)
+                            .onChange(of: group) { group in
+                                customUnits = []
+                                if customSelection {
+                                    inUnit = ""
+                                    outUnit = ""
+                                }
+                            }
                     }
                 }
-            }
-            
-            // Selection Number Picker
-            Picker("", selection: $unitAmount) {
-                Text("Multiple Units").tag("Multiple")
-                Text("Single Selections").tag("Single")
-            }
-            .pickerStyle(.segmented)
-            
-            // Various Conditional pickers
-            if unitAmount == "Multiple" {
-                Toggle("Custom Units?", isOn: $customSelection)
-                if customSelection {
-                    NavigationLink("Select Units:") {
-                        List {
-                            ForEach(units, id: \.self) { unit in
-                                Button(action: {
-                                    if customUnits.contains(unit) {
-                                        customUnits.removeAll(where: {$0 == unit})
-                                    }
-                                    else {
-                                        customUnits.append(unit)
-                                    }
-                                }) {
-                                    HStack {
-                                        Text(unit)
-                                            .foregroundColor(accentColor)
+                .pickerStyle(.navigationLink)
+                
+                // Name Slot
+                HStack {
+                    Text("Name:")
+                    TextField(group, text: $name)
+                    ZStack {
+                        Button(action: {
+                            name = ""
+                        }) {
+                            Image(systemName: "multiply")
+                                .font(.system(size: 24))
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+                
+                // Selection Number Picker
+                Picker("", selection: $unitAmount) {
+                    Text("Multiple Units").tag("Multiple")
+                    Text("Single Selections").tag("Single")
+                }
+                .pickerStyle(.segmented)
+                
+                // Various Conditional pickers
+                if unitAmount == "Multiple" {
+                    Toggle("Custom Units?", isOn: $customSelection)
+                    if customSelection {
+                        NavigationLink("Select Units:") {
+                            List {
+                                ForEach(units, id: \.self) { unit in
+                                    Button(action: {
                                         if customUnits.contains(unit) {
-                                            Spacer()
-                                            Image(systemName: "checkmark")
+                                            customUnits.removeAll(where: {$0 == unit})
+                                        }
+                                        else {
+                                            customUnits.append(unit)
+                                        }
+                                    }) {
+                                        HStack {
+                                            Text(unit)
+                                                .foregroundColor(accentColor)
+                                            if customUnits.contains(unit) {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                    }
-                    .task {
-                        if inUnit == "" {
-                            inUnit = customUnits.first ?? ""
-                            outUnit = customUnits.first ?? ""
+                        .task {
+                            if inUnit == "" {
+                                inUnit = customUnits.first ?? ""
+                                outUnit = customUnits.first ?? ""
+                            }
                         }
-                    }
-                    if customUnits != [] {
+                        if customUnits != [] {
+                            Picker("Initial In Unit:", selection: $inUnit) {
+                                ForEach(customUnits, id: \.self) { unit in
+                                    Text(unit).tag(unit)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            Picker("Initial Out Unit:", selection: $outUnit) {
+                                ForEach(customUnits, id: \.self) { unit in
+                                    Text(unit).tag(unit)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        }
+                    } else {
                         Picker("Initial In Unit:", selection: $inUnit) {
-                            ForEach(customUnits, id: \.self) { unit in
+                            ForEach(units, id: \.self) { unit in
                                 Text(unit).tag(unit)
                             }
                         }
                         .pickerStyle(.menu)
                         Picker("Initial Out Unit:", selection: $outUnit) {
-                            ForEach(customUnits, id: \.self) { unit in
+                            ForEach(units, id: \.self) { unit in
                                 Text(unit).tag(unit)
                             }
                         }
                         .pickerStyle(.menu)
                     }
-                } else {
-                    Picker("Initial In Unit:", selection: $inUnit) {
+                } else if unitAmount == "Single" {
+                    Picker("In Unit:", selection: $inUnit) {
                         ForEach(units, id: \.self) { unit in
                             Text(unit).tag(unit)
                         }
                     }
                     .pickerStyle(.menu)
-                    Picker("Initial Out Unit:", selection: $outUnit) {
+                    Picker("Out Unit:", selection: $outUnit) {
                         ForEach(units, id: \.self) { unit in
                             Text(unit).tag(unit)
                         }
                     }
                     .pickerStyle(.menu)
                 }
-            } else if unitAmount == "Single" {
-                Picker("In Unit:", selection: $inUnit) {
-                    ForEach(units, id: \.self) { unit in
-                        Text(unit).tag(unit)
+                
+            } else {
+                
+                // Basic
+                Picker("Group:", selection: $group) {
+                    ForEach(basicConverters, id: \.group) { converter in
+                        Text(converter.group).tag(converter.group)
+                            .task {
+                                units = converter.units
+                                name = converter.group
+                                inUnit = converter.inUnit
+                                outUnit = converter.outUnit
+                            }
                     }
                 }
-                .pickerStyle(.menu)
-                Picker("Out Unit:", selection: $outUnit) {
-                    ForEach(units, id: \.self) { unit in
-                        Text(unit).tag(unit)
-                    }
-                }
-                .pickerStyle(.menu)
+                .pickerStyle(.navigationLink)
+                
             }
         }
         .accentColor(accentColor)

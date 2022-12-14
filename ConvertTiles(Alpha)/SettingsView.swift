@@ -9,13 +9,24 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("plus") var isPlus = false
+    @AppStorage("plus") var isPlus: Bool = false
     @Binding var accentColor: Color
+    
+    //Debug
+    @AppStorage("HLB") var hasLaunchedBefore: Bool = false
+    
     var body: some View {
         Form {
             Toggle("Plus:", isOn: $isPlus)
-            ColorPicker("Accent Color:", selection: $accentColor)
+            if isPlus {
+                ColorPicker("Accent Color:", selection: $accentColor)
+            }
             NavigationLink("About ConvertTiles", destination: AboutView())
+            
+            //Debug
+            Section("Debug") {
+                Toggle("Has Launched Before:", isOn: $hasLaunchedBefore)
+            }
         }
         .navigationTitle("Settings")
         .navigationBarItems(trailing: Button(action: {
