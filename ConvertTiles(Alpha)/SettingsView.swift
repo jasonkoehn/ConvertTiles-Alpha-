@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("plus") var isPlus: Bool = false
+    @AppStorage("pro") var pro: Bool = false
     @Binding var accentColor: Color
     
     //Debug
@@ -17,14 +17,23 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
-            Toggle("Plus:", isOn: $isPlus)
-            if isPlus {
+            HStack {
+                Text("Get Pro:")
+                Spacer()
+                Button(action: {
+                    
+                }) {
+                    Text("Upgrade")
+                }
+            }
+            if pro {
                 ColorPicker("Accent Color:", selection: $accentColor)
             }
             NavigationLink("About ConvertTiles", destination: AboutView())
             
             //Debug
             Section("Debug") {
+                Toggle("Pro:", isOn: $pro)
                 Toggle("Has Launched Before:", isOn: $hasLaunchedBefore)
             }
         }

@@ -19,12 +19,12 @@ struct AddTileView: View {
     @State var unitAmount = "Multiple"
     @Binding var converters: [Converter]
     @State var accentColor: Color
-    @AppStorage("plus") var isPlus: Bool = false
+    @AppStorage("pro") var pro: Bool = false
     var body: some View {
         Form {
-            if isPlus {
+            if pro {
                 
-                // Plus
+                // Pro
                 
                 // Selection of the Group
                 Picker("Group:", selection: $group) {
