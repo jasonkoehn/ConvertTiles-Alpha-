@@ -17,17 +17,29 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
-            HStack {
-                Text("Get Pro:")
-                Spacer()
-                Button(action: {
-                    
-                }) {
-                    Text("Upgrade")
+            if pro == false {
+                HStack {
+                    Text("Get Pro:")
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Text("Upgrade")
+                    }
                 }
             }
             if pro {
                 ColorPicker("Accent Color:", selection: $accentColor)
+            } else {
+                HStack {
+                    Text("Accent Color:")
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Text("Get Pro")
+                    }
+                }
             }
             NavigationLink("About ConvertTiles", destination: AboutView())
             

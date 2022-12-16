@@ -16,6 +16,8 @@ struct TilesPageView: View {
     @State var converters: [Converter] = []
     var columns = [GridItem(.adaptive(minimum: 335))]
     @State private var accentColor: Color = loadColor(key: "accentColor")
+    @State private var presentAlert = false
+    @AppStorage("pro") var pro: Bool = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -60,7 +62,15 @@ struct TilesPageView: View {
                 Image(systemName: "gear")
             })
             .navigationBarItems(trailing: Button(action: {
-                self.showAddTileView.toggle()
+                if pro {
+                    self.showAddTileView.toggle()
+                } else {
+                    if converters.count > 2 {
+                        self.presentAlert = true
+                    } else {
+                        self.showAddTileView.toggle()
+                    }
+                }
             }){
                 Image(systemName: "plus")
             })
@@ -86,6 +96,7 @@ struct TilesPageView: View {
                 }
             })
         }
+        .alert("Cannot have more than 3 tiles with a basic subscription.", isPresented: $presentAlert, actions: {})
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showSettingsView) {
             NavigationView {
