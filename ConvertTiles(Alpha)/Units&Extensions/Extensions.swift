@@ -23,14 +23,20 @@ func FormatNum(from: NSNumber) -> String {
     return formatter.string(from: from)!
 }
 
-func saveColor(color: Color, key: String) {
-    let color = UIColor(color).cgColor
-    if let components = color.components {
-        UserDefaults.standard.set(components, forKey: key)
-    }
-}
 func loadColor(key: String) -> Color {
     guard let array = UserDefaults.standard.object(forKey: key) as? [CGFloat] else { return Color.blue }
+    let color = Color(.sRGB, red: array[0], green: array[1], blue: array[2], opacity: array[3])
+    return color
+}
+
+func findColorValues(color: Color) -> [CGFloat] {
+    let color = UIColor(color).cgColor
+    let components = color.components ?? [0.156956285238266, 0.3742818236351013, 0.9598580002784729, 1.0]
+    return components
+}
+
+func loadColorValues(inColor: [CGFloat]) -> Color {
+    let array = inColor
     let color = Color(.sRGB, red: array[0], green: array[1], blue: array[2], opacity: array[3])
     return color
 }

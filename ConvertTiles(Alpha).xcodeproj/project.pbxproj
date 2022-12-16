@@ -14,6 +14,7 @@
 		87000C8A2948CAE10095DAE2 /* ConvertersArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C892948CAE10095DAE2 /* ConvertersArray.swift */; };
 		87000C8C2948CAF50095DAE2 /* UnitsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C8B2948CAF50095DAE2 /* UnitsSwitch.swift */; };
 		87000C8E2948CB150095DAE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87000C8D2948CB150095DAE2 /* Extensions.swift */; };
+		871E1744294CDEC300835F28 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E1743294CDEC300835F28 /* PurchaseView.swift */; };
 		8779DD052947D04900F9AA6C /* ConvertTiles_Alpha_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */; };
 		8779DD092947D04A00F9AA6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779DD082947D04A00F9AA6C /* Assets.xcassets */; };
 		8779DD0D2947D04A00F9AA6C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779DD0C2947D04A00F9AA6C /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		87000C892948CAE10095DAE2 /* ConvertersArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertersArray.swift; sourceTree = "<group>"; };
 		87000C8B2948CAF50095DAE2 /* UnitsSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSwitch.swift; sourceTree = "<group>"; };
 		87000C8D2948CB150095DAE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		871E1743294CDEC300835F28 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		8779DD012947D04900F9AA6C /* ConvertTiles(Alpha).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConvertTiles(Alpha).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8779DD042947D04900F9AA6C /* ConvertTiles_Alpha_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTiles_Alpha_App.swift; sourceTree = "<group>"; };
 		8779DD082947D04A00F9AA6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				87000C852948CA720095DAE2 /* AddTileView.swift */,
 				87000C872948CA7D0095DAE2 /* SettingsView.swift */,
 				87FAD5662948ED8B0014C22F /* AboutView.swift */,
+				871E1743294CDEC300835F28 /* PurchaseView.swift */,
 				87000C8F2948CB1B0095DAE2 /* Units&Extensions */,
 				8779DD082947D04A00F9AA6C /* Assets.xcassets */,
 				8779DD0A2947D04A00F9AA6C /* ConvertTiles_Alpha_.entitlements */,
@@ -298,6 +301,7 @@
 				87000C8E2948CB150095DAE2 /* Extensions.swift in Sources */,
 				87FAD5672948ED8B0014C22F /* AboutView.swift in Sources */,
 				87000C8A2948CAE10095DAE2 /* ConvertersArray.swift in Sources */,
+				871E1744294CDEC300835F28 /* PurchaseView.swift in Sources */,
 				87000C822948CA2F0095DAE2 /* TilesPageView.swift in Sources */,
 				87000C862948CA720095DAE2 /* AddTileView.swift in Sources */,
 				87000C842948CA490095DAE2 /* TileBoxView.swift in Sources */,

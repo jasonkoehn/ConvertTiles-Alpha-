@@ -16,7 +16,7 @@ struct TilesPageView: View {
     @State var converters: [Converter] = []
     var columns = [GridItem(.adaptive(minimum: 335))]
     @State private var accentColor: Color = loadColor(key: "accentColor")
-    @State private var presentAlert = false
+    @State private var presentPurchaseSheet = false
     @AppStorage("pro") var pro: Bool = false
     var body: some View {
         NavigationView {
@@ -40,7 +40,7 @@ struct TilesPageView: View {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(converters, id: \.id) { converter in
-                                TileBoxView(name: converter.name, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive, accentColor: $accentColor)
+                                TileBoxView(name: converter.name, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive, accentColor: $accentColor, hasCustomAccentColor: converter.hasCustomAccentColor, customAccentColor: loadColorValues(inColor: converter.customAccentColor))
                             }
                         }
                         .padding(.horizontal, 7)
@@ -66,7 +66,7 @@ struct TilesPageView: View {
                     self.showAddTileView.toggle()
                 } else {
                     if converters.count > 2 {
-                        self.presentAlert = true
+                        self.presentPurchaseSheet = true
                     } else {
                         self.showAddTileView.toggle()
                     }
@@ -96,7 +96,6 @@ struct TilesPageView: View {
                 }
             })
         }
-        .alert("Cannot have more than 3 tiles with a basic subscription.", isPresented: $presentAlert, actions: {})
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showSettingsView) {
             NavigationView {
@@ -106,6 +105,11 @@ struct TilesPageView: View {
         .sheet(isPresented: $showAddTileView) {
             NavigationView {
                 AddTileView(converters: $converters, accentColor: accentColor)
+            }
+        }
+        .fullScreenCover(isPresented: $presentPurchaseSheet) {
+            NavigationView {
+                PurchaseView()
             }
         }
         .task {

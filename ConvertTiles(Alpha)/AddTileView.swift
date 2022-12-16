@@ -20,6 +20,7 @@ struct AddTileView: View {
     @Binding var converters: [Converter]
     @State var accentColor: Color
     @AppStorage("pro") var pro: Bool = false
+    @State var customAccentColor: Bool = false
     var body: some View {
         Form {
             if pro {
@@ -68,6 +69,13 @@ struct AddTileView: View {
                     Text("Single Selections").tag("Single")
                 }
                 .pickerStyle(.segmented)
+                
+                // Custom Color?
+                Toggle("Custom Accent Color?", isOn: $customAccentColor)
+                if customAccentColor {
+                    ColorPicker("Custom Accent Color:", selection: $accentColor)
+                }
+                
                 
                 // Various Conditional pickers
                 if unitAmount == "Multiple" {
@@ -168,12 +176,12 @@ struct AddTileView: View {
         .navigationBarItems(trailing: Button(action: {
             if unitAmount == "Multiple" {
                 if customSelection {
-                    converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: customUnits, inUnit: inUnit, outUnit: outUnit))
+                    converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: customUnits, inUnit: inUnit, outUnit: outUnit, hasCustomAccentColor: customAccentColor, customAccentColor: findColorValues(color: accentColor)))
                 } else {
-                    converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: units, inUnit: inUnit, outUnit: outUnit))
+                    converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: units, inUnit: inUnit, outUnit: outUnit, hasCustomAccentColor: customAccentColor, customAccentColor: findColorValues(color: accentColor)))
                 }
             } else if unitAmount == "Single" {
-                converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: units, inUnit: inUnit, outUnit: outUnit))
+                converters.append(Converter(name: name, id: UUID(), group: group, unitAmount: unitAmount, units: units, inUnit: inUnit, outUnit: outUnit, hasCustomAccentColor: customAccentColor, customAccentColor: findColorValues(color: accentColor)))
             }
             let manager = FileManager.default
             guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}

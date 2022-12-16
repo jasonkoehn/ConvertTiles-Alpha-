@@ -15,6 +15,15 @@ struct Converter: Codable {
     var units: [String]
     var inUnit: String
     var outUnit: String
+    var hasCustomAccentColor: Bool
+    var customAccentColor: [CGFloat]
+}
+
+struct BasicConverter: Codable {
+    var group: String
+    var units: [String]
+    var inUnit: String
+    var outUnit: String
 }
 
 struct ConverterList: Codable {
@@ -22,13 +31,13 @@ struct ConverterList: Codable {
     var units: [String]
 }
 
-var basicConverters: [Converter] = [
-    Converter(name: "Area", id: UUID(), group: "Area", unitAmount: "Multiple", units: ["Square Kilometers", "Square Meters", "Square Centimeters", "Square Millimeters", "Square Inches", "Square Feet", "Square Yards", "Square Miles", "Acres", "Hectares"], inUnit: "Square Meters", outUnit: "Square Feet"),
-    Converter(name: "Length", id: UUID(), group: "Length", unitAmount: "Multiple", units: ["Kilometers", "Decameters", "Meters", "Decimeters", "Centimeters", "Millimeters", "Inches", "Feet", "Yards", "Miles", "Nautical Miles"], inUnit: "Meters", outUnit: "Yards"),
-    Converter(name: "Mass", id: UUID(), group: "Mass", unitAmount: "Multiple", units: ["Kilograms", "Grams", "Milligrams", "Ounces", "Pounds", "MetricTons", "ShortTons"], inUnit: "Kilograms", outUnit: "Pounds"),
-    Converter(name: "Speed", id: UUID(), group: "Speed", unitAmount: "Multiple", units: ["Kilometers Per Hour", "Miles Per Hour", "Knots"], inUnit: "Knots", outUnit: "Miles Per Hour"),
-    Converter(name: "Temperature", id: UUID(), group: "Temperature", unitAmount: "Multiple", units: ["Celsius", "Fahrenheit"], inUnit: "Celsius", outUnit: "Fahrenheit"),
-    Converter(name: "Volume", id: UUID(), group: "Volume", unitAmount: "Multiple", units: ["Liters", "Milliliters","Cubic Meters", "Cubic Millimeters", "Cubic Inches", "Cubic Feet", "Cubic Yards", "Acre Feet", "Bushels", "Teaspoons", "Tablespoons", "Fluid Ounces", "Cups", "Pints", "Quarts", "Gallons"], inUnit: "Gallons", outUnit: "Liters")
+var basicConverters: [BasicConverter] = [
+    BasicConverter(group: "Area", units: ["Square Kilometers", "Square Meters", "Square Centimeters", "Square Millimeters", "Square Inches", "Square Feet", "Square Yards", "Square Miles", "Acres", "Hectares"], inUnit: "Square Meters", outUnit: "Square Feet"),
+    BasicConverter(group: "Length", units: ["Kilometers", "Decameters", "Meters", "Decimeters", "Centimeters", "Millimeters", "Inches", "Feet", "Yards", "Miles", "Nautical Miles"], inUnit: "Meters", outUnit: "Yards"),
+    BasicConverter(group: "Mass", units: ["Kilograms", "Grams", "Milligrams", "Ounces", "Pounds", "MetricTons", "ShortTons"], inUnit: "Kilograms", outUnit: "Pounds"),
+    BasicConverter(group: "Speed", units: ["Kilometers Per Hour", "Miles Per Hour", "Knots"], inUnit: "Knots", outUnit: "Miles Per Hour"),
+    BasicConverter(group: "Temperature", units: ["Celsius", "Fahrenheit"], inUnit: "Celsius", outUnit: "Fahrenheit"),
+    BasicConverter(group: "Volume", units: ["Liters", "Milliliters","Cubic Meters", "Cubic Millimeters", "Cubic Inches", "Cubic Feet", "Cubic Yards", "Acre Feet", "Bushels", "Teaspoons", "Tablespoons", "Fluid Ounces", "Cups", "Pints", "Quarts", "Gallons"], inUnit: "Gallons", outUnit: "Liters")
 ]
 
 var convertersList: [ConverterList] = [
