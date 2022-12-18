@@ -18,6 +18,10 @@ struct TilesPageView: View {
     @State private var accentColor: Color = loadColor(key: "accentColor")
     @State private var presentPurchaseSheet = false
     @AppStorage("pro") var pro: Bool = false
+    @Environment(\.scenePhase) var scenePhase
+    @State var saveUnits: Bool = false
+    @State var newUnits: [NewUnits] = []
+    @State var numOfUnits: Int = 0
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,6 +30,7 @@ struct TilesPageView: View {
                         ForEach(converters, id: \.id) { converter in
                             Text(converter.name)
                                 .font(.system(size: 20))
+                                .foregroundColor(converter.hasCustomAccentColor ? loadColorValues(inColor: converter.customAccentColor) : accentColor)
                         }
                         .onMove { indexSet, offset in
                             converters.move(fromOffsets: indexSet, toOffset: offset)
@@ -40,7 +45,7 @@ struct TilesPageView: View {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(converters, id: \.id) { converter in
-                                TileBoxView(name: converter.name, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive, accentColor: $accentColor, hasCustomAccentColor: converter.hasCustomAccentColor, customAccentColor: loadColorValues(inColor: converter.customAccentColor))
+                                TileBoxView(name: converter.name, id: converter.id, units: converter.units, group: converter.group, unitAmount: converter.unitAmount, inUnit: converter.inUnit, outUnit: converter.outUnit, isInputActive: _isInputActive, accentColor: $accentColor, hasCustomAccentColor: converter.hasCustomAccentColor, customAccentColor: loadColorValues(inColor: converter.customAccentColor), saveUnits: $saveUnits, newUnits: $newUnits, numOfUnits: $numOfUnits)
                             }
                         }
                         .padding(.horizontal, 7)
@@ -96,6 +101,36 @@ struct TilesPageView: View {
                 }
             })
         }
+        
+        // start of save units
+        .onChange(of: scenePhase) { phase in
+            if pro {
+                if phase == .background {
+                    saveUnits = true
+                }
+            }
+        }
+        .onChange(of: numOfUnits) { num in
+            if num == converters.count {
+                var newConverters: [Converter] = []
+                for converter in converters {
+                    for unit in newUnits {
+                        if unit.id == converter.id {
+                            newConverters.append(Converter(name: converter.name, id: converter.id, group: converter.group, unitAmount: converter.unitAmount, units: converter.units, inUnit: unit.inUnit, outUnit: unit.outUnit, hasCustomAccentColor: converter.hasCustomAccentColor, customAccentColor: converter.customAccentColor))
+                        }
+                    }
+                }
+                let manager = FileManager.default
+                guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+                let encoder = PropertyListEncoder()
+                let convertersUrl = managerUrl.appendingPathComponent("converters.plist")
+                manager.createFile(atPath: convertersUrl.path, contents: nil, attributes: nil)
+                let encodedData = try! encoder.encode(newConverters)
+                try! encodedData.write(to: convertersUrl)
+            }
+        }
+        // end of save units
+        
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showSettingsView) {
             NavigationView {

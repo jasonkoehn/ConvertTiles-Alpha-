@@ -31,6 +31,12 @@ struct ConverterList: Codable {
     var units: [String]
 }
 
+struct NewUnits {
+    var id: UUID
+    var inUnit: String
+    var outUnit: String
+}
+
 var basicConverters: [BasicConverter] = [
     BasicConverter(group: "Area", units: ["Square Kilometers", "Square Meters", "Square Centimeters", "Square Millimeters", "Square Inches", "Square Feet", "Square Yards", "Square Miles", "Acres", "Hectares"], inUnit: "Square Meters", outUnit: "Square Feet"),
     BasicConverter(group: "Length", units: ["Kilometers", "Decameters", "Meters", "Decimeters", "Centimeters", "Millimeters", "Inches", "Feet", "Yards", "Miles", "Nautical Miles"], inUnit: "Meters", outUnit: "Yards"),

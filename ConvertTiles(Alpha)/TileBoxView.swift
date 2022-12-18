@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TileBoxView: View {
     var name: String
+    var id: UUID
     var units: [String]
     var group: String
     var unitAmount: String
@@ -19,6 +20,9 @@ struct TileBoxView: View {
     @Binding var accentColor: Color
     var hasCustomAccentColor: Bool
     var customAccentColor: Color
+    @Binding var saveUnits: Bool
+    @Binding var newUnits: [NewUnits]
+    @Binding var numOfUnits: Int
     var body: some View {
         VStack {
             Text(name)
@@ -91,6 +95,12 @@ struct TileBoxView: View {
             }
             .padding(.top, 30)
             .padding(.bottom, 53)
+        }
+        .onChange(of: saveUnits) { save in
+            if save {
+                newUnits.append(NewUnits(id: id, inUnit: inUnit, outUnit: outUnit))
+                numOfUnits += 1
+            }
         }
         .background(Color(.systemGray5))
         .cornerRadius(12)

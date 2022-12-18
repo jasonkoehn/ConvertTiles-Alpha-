@@ -12,22 +12,14 @@ struct SettingsView: View {
     @AppStorage("pro") var pro: Bool = false
     @Binding var accentColor: Color
     @State private var presentPurchaseSheet = false
-    
-    //Debug
-    @AppStorage("HLB") var hasLaunchedBefore: Bool = false
-    
     var body: some View {
         Form {
             if pro == false {
-                HStack {
-                    Text("Get Pro:")
-                    Spacer()
                     Button(action: {
                         self.presentPurchaseSheet.toggle()
                     }) {
-                        Text("Upgrade")
+                        Text("Upgrade to Pro")
                     }
-                }
             }
             if pro {
                 ColorPicker("Tiles Accent Color:", selection: $accentColor)
@@ -38,17 +30,21 @@ struct SettingsView: View {
                     Button(action: {
                         self.presentPurchaseSheet.toggle()
                     }) {
-                        Text("Get Pro")
+                        Text("Upgrade")
                     }
                 }
             }
-            NavigationLink("About ConvertTiles", destination: AboutView())
-            
-            //Debug
-//            Section("Debug") {
-//                Toggle("Pro:", isOn: $pro)
-//                Toggle("Has Launched Before:", isOn: $hasLaunchedBefore)
-//            }
+            Section {
+                Button(action: {
+                    //Restore Purchase
+                    
+                    //Debug
+                    self.pro.toggle()
+                }) {
+                    Text("Restore Purchase")
+                }
+                NavigationLink("About ConvertTiles", destination: AboutView())
+            }
         }
         .navigationTitle("Settings")
         .navigationBarItems(trailing: Button(action: {
