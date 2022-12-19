@@ -22,7 +22,8 @@ struct LaunchView: View {
             try! encodedData.write(to: convertersUrl)
             hasLaunchedBefore = true
         }) {
-            Text("ok")
+            Text("Launch")
+                .font(.system(size: 40))
         }
     }
 }
