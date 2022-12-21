@@ -13,38 +13,42 @@ struct SettingsView: View {
     @Binding var accentColor: Color
     @State private var presentPurchaseSheet = false
     var body: some View {
-        Form {
-            if pro == false {
+        VStack {
+            Form {
+                if pro == false {
                     Button(action: {
                         self.presentPurchaseSheet.toggle()
                     }) {
                         Text("Upgrade to Pro")
                     }
-            }
-            if pro {
-                ColorPicker("Tiles Accent Color:", selection: $accentColor)
-            } else {
-                HStack {
-                    Text("Tiles Accent Color:")
-                    Spacer()
+                }
+                if pro {
+                    ColorPicker("Tiles Accent Color:", selection: $accentColor)
+                } else {
+                    HStack {
+                        Text("Tiles Accent Color:")
+                        Spacer()
+                        Button(action: {
+                            self.presentPurchaseSheet.toggle()
+                        }) {
+                            Text("Upgrade")
+                        }
+                    }
+                }
+                Section {
                     Button(action: {
-                        self.presentPurchaseSheet.toggle()
+                        //Restore Purchase
+                        
+                        //Debug
+                        self.pro.toggle()
                     }) {
-                        Text("Upgrade")
+                        Text("Restore Purchase")
                     }
                 }
             }
-            Section {
-                Button(action: {
-                    //Restore Purchase
-                    
-                    //Debug
-                    self.pro.toggle()
-                }) {
-                    Text("Restore Purchase")
-                }
-                NavigationLink("About ConvertTiles", destination: AboutView())
-            }
+            Spacer()
+            Text("© 2023 Jason Koehn")
+                .font(.system(size: 12))
         }
         .navigationTitle("Settings")
         .navigationBarItems(trailing: Button(action: {

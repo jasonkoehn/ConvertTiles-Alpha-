@@ -23,6 +23,16 @@ func FormatNum(from: NSNumber) -> String {
     return formatter.string(from: from)!
 }
 
+func saveToArray(converters: [Converter]) {
+    let manager = FileManager.default
+    guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+    let encoder = PropertyListEncoder()
+    let convertersUrl = managerUrl.appendingPathComponent("converters.plist")
+    manager.createFile(atPath: convertersUrl.path, contents: nil, attributes: nil)
+    let encodedData = try! encoder.encode(converters)
+    try! encodedData.write(to: convertersUrl)
+}
+
 func loadColor(key: String) -> Color {
     guard let array = UserDefaults.standard.object(forKey: key) as? [CGFloat] else { return Color.blue }
     let color = Color(.sRGB, red: array[0], green: array[1], blue: array[2], opacity: array[3])
