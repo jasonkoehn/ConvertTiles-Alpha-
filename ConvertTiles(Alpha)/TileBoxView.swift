@@ -23,6 +23,7 @@ struct TileBoxView: View {
     @Binding var saveUnits: Bool
     @Binding var newUnits: [NewUnits]
     @Binding var numOfUnits: Int
+    @AppStorage("pro") var pro: Bool = false
     var body: some View {
         VStack {
             Text(name)
@@ -62,10 +63,12 @@ struct TileBoxView: View {
                     }
                 }
                 Button(action: {
-                    let inu = inUnit
-                    let outu = outUnit
-                    inUnit = outu
-                    outUnit = inu
+                    if pro {
+                        let inu = inUnit
+                        let outu = outUnit
+                        inUnit = outu
+                        outUnit = inu
+                    }
                 }) {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 23))

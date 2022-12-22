@@ -47,6 +47,8 @@ struct SettingsView: View {
                 }
             }
             Spacer()
+            Text("MIT License")
+                .font(.system(size: 12))
             Text("© 2023 Jason Koehn")
                 .font(.system(size: 12))
         }
