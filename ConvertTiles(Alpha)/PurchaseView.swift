@@ -20,7 +20,7 @@ struct PurchaseView: View {
                 Text("Advantages of pro:")
                     .italic()
                     .font(.system(size: 25))
-                Text("22 converter groups.")
+                Text("20 converter groups.")
                     .foregroundColor(.blue)
                     .font(.system(size: 25))
                     .fontDesign(.rounded)
